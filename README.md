@@ -30,17 +30,17 @@
 
 ```bash
 # Без интеграций
-pip install rag_builder
+pip install llm-rag-builder
 
 # Все интеграции
-pip install all  
+pip install llm-rag-builder[all]  
 
 # Интеграции по отдельности
-pip install rag_builder[openai]
-pip install rag_builder[yandex]
-pip install rag_builder[gemini]
-pip install rag_builder[chroma]
-pip install rag_builder[pgvector]
+pip install llm-rag-builder[openai]
+pip install llm-rag-builder[yandex]
+pip install llm-rag-builder[gemini]
+pip install llm-rag-builder[chroma]
+pip install llm-rag-builder[pgvector]
 ```
 
 ## Использование
@@ -88,6 +88,14 @@ dialog.add_command(get_weather_func)
 # Обработка сообщения пользователя
 dialog.proccess_user_message('Какая погода?')
 ```
+Вывод:
+```
+USER: Какая погода?
+ASSISTANT: <RUNFUNC> get_weather() </RUNFUNC>
+SYSTEM: Текущая погода солнечная
+ASSISTANT: Текущая погода солнечная
+```
+
 Больше примеров использования можно найти в папке `examples`.
 ## Вклад
 
