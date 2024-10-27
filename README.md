@@ -33,14 +33,14 @@
 pip install llm-rag-builder
 
 # Все интеграции
-pip install llm-rag-builder[all]  
+pip install "llm-rag-builder[all]"  
 
 # Интеграции по отдельности
-pip install llm-rag-builder[openai]
-pip install llm-rag-builder[yandex]
-pip install llm-rag-builder[gemini]
-pip install llm-rag-builder[chroma]
-pip install llm-rag-builder[pgvector]
+pip install "llm-rag-builder[openai]"
+pip install "llm-rag-builder[yandex]"
+pip install "llm-rag-builder[gemini]"
+pip install "llm-rag-builder[chroma]"
+pip install "llm-rag-builder[pgvector]"
 ```
 
 ## Использование
