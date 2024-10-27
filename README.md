@@ -29,7 +29,18 @@
 Для установки `rag_builder` можно использовать pip:
 
 ```bash
+# Без интеграций
 pip install rag_builder
+
+# Все интеграции
+pip install all  
+
+# Интеграции по отдельности
+pip install rag_builder[openai]
+pip install rag_builder[yandex]
+pip install rag_builder[gemini]
+pip install rag_builder[chroma]
+pip install rag_builder[pgvector]
 ```
 
 ## Использование
