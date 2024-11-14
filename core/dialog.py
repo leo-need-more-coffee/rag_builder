@@ -4,39 +4,51 @@ from .llm import BaseLLM
 from .command import BaseCommand
 
 
-class BaseMessageType(ABC):
-    name: str
-
-
 class BaseMessage(ABC):
     content: str
-    type: BaseMessageType
+    type: str
     hidden: bool = False
     role: str
 
-    def __init__(self, content: str, message_type: BaseMessageType):
+    def __init__(self, content: str, message_type: str, role: str):
         self.content = content
         self.type = message_type
+        self.role = role
 
 
 class BaseUserMessage(BaseMessage):
     role = "user"
+
+    def __init__(self, content: str, message_type: str):
+        super().__init__(
+            content=content,
+            message_type=message_type,
+            role="user"
+        )
 
 
 class BaseAgentMessage(BaseMessage):
     role = "agent"
     llm: BaseLLM
 
-    def __init__(self, content: str, message_type: BaseMessageType, llm: BaseLLM):
+    def __init__(self, content: str, message_type: str, llm: BaseLLM):
         super().__init__(
             content=content,
-            message_type=message_type
+            message_type=message_type,
+            role="agent"
         )
         self.llm = llm
 
 
 class BaseSystemMesage(BaseMessage):
     role = "system"
+
+    def __init__(self, content: str, message_type: str):
+        super().__init__(
+            content=content,
+            message_type=message_type,
+            role="system"
+        )
 
 
 class BaseDialog(ABC):
@@ -63,13 +75,13 @@ class BaseDialog(ABC):
     def add_message(self, message: BaseMessage) -> None:
         self._messages.append(message)
 
-    def add_user_message(self, content: str, message_type: BaseMessageType) -> None:
+    def add_user_message(self, content: str, message_type: str) -> None:
         self.add_message(BaseUserMessage(content=content, message_type=message_type))
 
-    def add_agent_message(self, content: str, message_type: BaseMessageType, llm: BaseLLM) -> None:
+    def add_agent_message(self, content: str, message_type: str, llm: BaseLLM) -> None:
         self.add_message(BaseAgentMessage(content=content, message_type=message_type, llm=llm))
 
-    def add_system_message(self, content: str, message_type: BaseMessageType) -> None:
+    def add_system_message(self, content: str, message_type: str) -> None:
         self.add_message(BaseSystemMesage(content=content, message_type=message_type))
 
     def add_command(self, command: BaseCommand) -> None:
@@ -87,7 +99,7 @@ class BaseDialog(ABC):
     def proccess_user_message(
             self,
             content: str,
-            message_type: BaseMessageType,
+            message_type: str,
             llm: BaseLLM = None,
             reachable=False,
             reach_num=5,
