@@ -6,21 +6,21 @@ setup(
     version="0.1.4",
     description="Это библиотека на Python, предназначенная для упрощения создания и управления моделями генерации"
                 " с использованием поиска (Retrieval-Augmented Generation, RAG).",
-    long_description=open("README.md").read(),
+    long_description=open("llm-rag-builder/README.md").read(),
     long_description_content_type="text/markdown",
     author="лень",
     author_email="pzrnqt1vrss@protonmail.com",
     url="https://github.com/leo-need-more-coffee/rag_builder",
     packages=[
-        'rag_builder',
-        'rag_builder.core',
-        'rag_builder.integrations',
-        'rag_builder.integrations.chromadb',
-        'rag_builder.integrations.gemini',
-        'rag_builder.integrations.openai',
-        'rag_builder.integrations.pgvector',
-        'rag_builder.integrations.yandex',
-        'rag_builder.utils'
+        'llm_rag_builder',
+        'llm_rag_builder.core',
+        'llm_rag_builder.integrations',
+        'llm_rag_builder.integrations.chromadb',
+        'llm_rag_builder.integrations.gemini',
+        'llm_rag_builder.integrations.openai',
+        'llm_rag_builder.integrations.pgvector',
+        'llm_rag_builder.integrations.yandex',
+        'llm_rag_builder.utils'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
