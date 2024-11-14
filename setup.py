@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="llm-rag-builder",
-    version="0.2.1",
+    version="0.2.2",
     description="Это библиотека на Python, предназначенная для упрощения создания и управления моделями генерации"
                 " с использованием поиска (Retrieval-Augmented Generation, RAG).",
     long_description=open("llm_rag_builder/README.md").read(),

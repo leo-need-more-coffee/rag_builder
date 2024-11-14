@@ -29,15 +29,13 @@ class BaseUserMessage(BaseMessage):
 
 class BaseAgentMessage(BaseMessage):
     role = "agent"
-    llm: BaseLLM
 
-    def __init__(self, content: str, message_type: str, llm: BaseLLM):
+    def __init__(self, content: str, message_type: str):
         super().__init__(
             content=content,
             message_type=message_type,
             role="agent"
         )
-        self.llm = llm
 
 
 class BaseSystemMesage(BaseMessage):
@@ -78,8 +76,8 @@ class BaseDialog(ABC):
     def add_user_message(self, content: str, message_type: str) -> None:
         self.add_message(BaseUserMessage(content=content, message_type=message_type))
 
-    def add_agent_message(self, content: str, message_type: str, llm: BaseLLM) -> None:
-        self.add_message(BaseAgentMessage(content=content, message_type=message_type, llm=llm))
+    def add_agent_message(self, content: str, message_type: str) -> None:
+        self.add_message(BaseAgentMessage(content=content, message_type=message_type))
 
     def add_system_message(self, content: str, message_type: str) -> None:
         self.add_message(BaseSystemMesage(content=content, message_type=message_type))
